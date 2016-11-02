@@ -1,0 +1,15 @@
+
+run vim+cscope in windows
+
+1. install gvim to somewhere(such as "C:\Program Files (x86)\Vim").
+2. download cscope: https://code.google.com/archive/p/cscope-win32, unzip it and put it under gvim install path(as "C:\Program Files (x86)\Vim\vim80").
+3. download "cscope_maps.vim" and put it under your home directory(you can check it in vim by :echo expand('~'), for me, it's "C:\Users\ddeng", so put the file under "C:\Users\ddeng\.vim\plugin").
+4. put your .vimrc as this: C:\Users\ddeng\_vimrc
+5. enter your code path and produce cscope index file:
+	cmd> cd C:\mytest\node_4.3.0
+	cmd> "C:\Program Files (x86)\Vim\vim80\cscope.exe" -Rb
+6. run it under the same path:
+	C:\mytest\node_4.3.0> "C:\Program Files (x86)\Vim\vim80\gvim.exe" apps\main.c
+	
+You can put above line to a batch file (such as "run_it.bat") in the same path and send a shortcut to your desktop for convenient.
+	
