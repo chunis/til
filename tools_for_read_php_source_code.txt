@@ -1,0 +1,53 @@
+How to set up tools to read PHP source code
+
+
+Mainly verified it under Linux(Debian/Sid@2016.12), should also works under
+Windows, although need some modifications.
+The first 2 ways should be easier under Windows.
+
+
+** A. Use Editor 'Atom'
+
+1. Make sure you've installed these packages:
+	project-manager
+	php-server
+	atom-ctags
+	php-integrator-base
+	php-integrator-navigation
+	atom-autocomplete-php
+	hyperclick
+2. "File" -> "Open Folder" to open your PHP code directory.
+3. "Packages" -> "Project Manager" -> "Save Project" to save the code as a project.
+4. "Packages" -> "PHP Integrator" -> "Set up current project".
+4. "Packages" -> "PHP Integrator" -> "Forcibly (Re)Index Project".
+Now you should be able to go the defination just by click.
+
+
+** B. Use 'PHPXref'
+
+1. download version '0.7.1' from: http://phpxref.sourceforge.net/, and extract it somewhere.
+2. you may need to change the perl script a bit. Just remove the function 'defined' from below lines:
+	637 1117 1157 1725 1728 1857 1860 1863
+3. Modify file 'phpxref.cfg', change these configs:
+	SOURCE=...
+	PROJECT=...
+	OUTPUT=...
+	CHARSET=...  (such as CHARSET=utf-8 if necessary)
+4. run './phpxref.pl'
+5. turn to your browser with below url:
+	file://<path_to_your_OUTPUT_directory>/nav.html
+Enjoy the source code. :-)
+
+
+** C. Use 'Vim' with 'ctags'.
+
+For PHP, you need a better 'ctags', such as 'phpctags'.
+$ sudo apt-get install composer
+$ cd <your_PHP_source_code_directory>
+$ composer require vendor/nikic
+$ composer require phpunit/phpunit  # not sure if this is needed or not
+$ curl -Ss http://vim-php.com/phpctags/install/phpctags.phar > phpctags
+So, time to produce the 'tags' file. You may add more arguments to suit your requirement.
+$ php phpctags -R   # produce the 'tags' file. You may add more arguments to suit your requirement.
+
+Now just viming any of your php code, and use 'ctrl-]' or 'gd' or 'gD' to jump.
