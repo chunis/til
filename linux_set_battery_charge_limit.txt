@@ -1,0 +1,18 @@
+How to set battery charge limit under Linux
+
+
+This just done in my Lenovo Thinkpad X260, under GNU/Debian Sid at 2016.12.28.
+Maybe also works for other Linux based on Lenovo Thinkpad, but not tested yet.
+
+Just run below commands:
+$ git clone https://github.com/teleshoes/tpacpi-bat.git
+$ cd tpacpi-bat/
+$ ./install.pl
+Now set it: (1 for main, 2 for secondary, 0 for either/both)
+$ sudo ./tpacpi-bat -s SP 1 95 # stop main battery charging at 95%
+$ sudo ./tpacpi-bat -s SP 2 95 # stop secondary battery charging at 95%
+$ sudo ./tpacpi-bat -s SP 0 95 # stop either/both charging at 95%
+
+Other ways include: use TLP(Linux Advanced Power Management), or change bios
+settings, or install kernel module 'tp-smapi-dkms', check it here:
+http://askubuntu.com/questions/34452/how-can-i-limit-battery-charging-to-80-capacity
