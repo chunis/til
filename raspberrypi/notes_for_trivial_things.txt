@@ -17,7 +17,16 @@ Just a quick fix. Not sure if this causes security issue or not. :-(
 -------------------------------------------------------------------
 ------- How to enable passwordless ssh login --------
 
-$ [ ! -d ~/.ssh ] && install -d 0m 700 ~/.ssh
+$ [ ! -d ~/.ssh ] && install -d -m 700 ~/.ssh
 $ vi ~/.ssh/authorized_keys  # paste your private ssh key here
 
 https://www.raspberrypi.org/documentation/remote-access/ssh/passwordless.md
+
+
+
+-------------------------------------------------------------------
+------- Filezilla won't access pi via SFTP (Times out) -------
+
+The solution was to edit file '/etc/ssh/sshd_config':
+1. uncommented the listen to 0.0.0.0 line.
+2. added 'useDNS no' to the end of the file.
