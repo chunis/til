@@ -1,0 +1,13 @@
+How to set a static IP Address for Raspberry
+
+
+Just change file '/etc/dhcpcd.conf', add these lines:
+interface eth0
+static ip_address=192.168.1.26/24
+static routers=192.168.1.1
+static domain_name_servers=192.168.1.1
+
+Note:
+1. you may need to run 'sudo ifconfig eth0 down; ifconfig eth0 up'.
+2. don't change file '/etc/network/interfaces'.
+   Older raspbian need change it, not the newer ones.
