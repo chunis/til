@@ -1,0 +1,70 @@
+2 ways to combine 2 pdf files together
+
+
+A. (Linux only):
+$ sudo apt-get install poppler-utils
+$ pdfunite file1.pdf file2.pdf file3.pdf outputfile.pdf
+
+
+B. Use PyPdf2:
+$ sudo pip install pypdf2  # --proxy=http://192.168.60.8:808
+Then create a script based on your requirement. Below are snippet of code for
+reference:
+# ---------------------------------------
+#!/usr/bin/python
+
+# Note: this only combine both of the 1st pages
+
+import sys
+from PyPDF2 import PdfFileWriter, PdfFileReader
+
+output = PdfFileWriter()
+input1 = PdfFileReader(open(sys.argv[1], "rb"))
+input2 = PdfFileReader(open(sys.argv[2], "rb"))
+# output.addPage(input1.getPage(2).rotateCounterClockwise(90))
+output.addPage(input1.getPage(0).rotateClockwise(90))
+output.addPage(input2.getPage(0))
+
+outputStream = file("output.pdf", "wb")
+output.write(outputStream)
+outputStream.close()
+# ---------------------------------------
+
+# ---------------------------------------
+#!/usr/bin/python
+
+# Note: this fully combine 2 files
+
+import PyPDF2
+
+path = open('path/to/hello.pdf', 'rb')
+path2 = open('path/to/another.pdf', 'rb')
+
+merger = PyPDF2.PdfFileMerger()
+merger.append(fileobj=path2)
+merger.append(fileobj=path)
+merger.write(open("test_out2.pdf", 'wb'))
+# ---------------------------------------
+
+# ---------------------------------------
+#!/usr/bin/python
+
+# Note: this can choose parts of either files
+
+import PyPDF2
+
+path = open('path/to/hello.pdf', 'rb')
+path2 = open('path/to/another.pdf', 'rb')
+
+merger = PyPDF2.PdfFileMerger()
+
+merger.merge(position=0, fileobj=path2)
+merger.merge(position=2, fileobj=path)
+merger.write(open("test_out.pdf", 'wb'))
+# ---------------------------------------
+
+URLs:
+https://github.com/mstamy2/PyPDF2
+https://www.blog.pythonlibrary.org/2012/07/11/pypdf2-the-new-fork-of-pypdf/
+https://pythonhosted.org/PyPDF2/Easy%20Concatenation%20Script.html
+
