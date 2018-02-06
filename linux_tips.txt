@@ -1,0 +1,13 @@
+## re-map F1 to Escape key
+
+My T400's Esc key is located on the top-right far away from others,
+while my X260 has it in the left side of F1. So when using Vim, I kept
+touching F1 when I wanted to 'Esc'. So better to remap F1 to Esc.
+
+Tools: Xmodmap && Xkeycaps
+Xkeycaps can be used to get the key name, so you know you should use
+'Escape' instead of 'Esc' in Xmodmap's config file.
+
+$ echo 'keysym F1 = Escape' > ~/.Xmodmap
+$ xmodmap ~/.Xmodmap
+
