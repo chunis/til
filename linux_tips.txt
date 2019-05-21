@@ -1,3 +1,12 @@
+Content
+-------
+
+## re-map F1 to Escape key
+
+
+
+---------------------------------
+
 ## re-map F1 to Escape key
 
 My T400's Esc key is located on the top-right far away from others,
@@ -10,4 +19,6 @@ Xkeycaps can be used to get the key name, so you know you should use
 
 $ echo 'keysym F1 = Escape' > ~/.Xmodmap
 $ xmodmap ~/.Xmodmap
+
+Tutorial: http://xahlee.info/linux/linux_xmodmap_tutorial.html
 
