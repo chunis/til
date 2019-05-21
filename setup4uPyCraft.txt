@@ -1,0 +1,25 @@
+Notes about how to set up the environment to run uPyCraft
+
+uPyCraft(https://github.com/DFRobot/uPyCraft_src) is an IDE for playing
+MicroPython on ESP32 and ESP8266. However, its document about how to prepare
+for running it under Linux is too complex and not necessary.
+
+Below are the steps to do it instead under GNU/Linux Debian Sid. Some
+libraries should also be installed using pip3, but not tested.
+
+sudo apt-get install qt4-dev-tools qt4-doc qt4-qtconfig qt4-demos qt4-designer
+sudo apt-get install libqwt5-qt4 libqwt5-qt4-dev
+sudo apt-get install python3-wxgtk4.0 
+sudo apt-get install python3
+sudo apt-get install python3-pip
+sudo apt-get install python3-sip
+sudo apt-get install python3-pyqt4
+sudo apt-get install python3-pyqt4.qsci
+sudo apt-get install python3-qscintilla2
+
+This steps are for python2 instead of python3, maybe useful:
+sudo apt-get install python-sip
+sudo apt-get install python-qt4  # note: just "qt4" instead of "pyqt4".
+sudo apt-get install python-qscintilla2
+
+And here is a PyQT5 version: https://github.com/jiapei100/uPyCraft_PyQt5
