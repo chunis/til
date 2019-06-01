@@ -14,12 +14,13 @@ sudo apt-get install python3
 sudo apt-get install python3-pip
 sudo apt-get install python3-sip
 sudo apt-get install python3-pyqt4
-sudo apt-get install python3-pyqt4.qsci
-sudo apt-get install python3-qscintilla2
+sudo apt-get install python3-pyqt4.qsci  # this is for qscintilla2
+sudo pip3 install pyserial pyflakes
 
 This steps are for python2 instead of python3, maybe useful:
 sudo apt-get install python-sip
 sudo apt-get install python-qt4  # note: just "qt4" instead of "pyqt4".
 sudo apt-get install python-qscintilla2
+sudo pip install pyserial pyflakes
 
 And here is a PyQT5 version: https://github.com/jiapei100/uPyCraft_PyQt5
