@@ -1,0 +1,51 @@
+How to install Asian Input to Arch+Gnome
+
+
+This simple note is for Arch with Gnome3 Desktop environment, but should be similar to other Linux distributions.
+It shows how to install both Japanese and Chinese input, and for for Chinese, "rime" supports both Pinyin and Wubi.
+This method bases on ibus; another good option would be based on Fcitx.
+
+1. install fonts
+You can install one big font for all Asian characters like:
+	$ sudo pacman -S adobe-source-han-sans-otc-fonts
+or only installed all the fonts only needed such as only for Chinese:
+	$ sudo pacman -S wqy-microhei
+
+2. change the locale
+* Edit file '/etc/locale.gen', uncomment below lines:
+	ja_JP.UTF-8 UTF-8  
+	zh_CN.UTF-8 UTF-8  
+  then run:
+  	$ sudo locale-gen
+
+3. Install ibus:
+	$ sudo pacman -S ibus
+   And put below lines to your '~/.xprofile':
+   	# ----------------------------
+   	# Settings for Japanese input
+	export GTK_IM_MODULE='ibus'
+	export QT_IM_MODULE='ibus'
+	export XMODIFIERS=@im='ibus'
+
+	#Toolbar for anthy
+	ibus-daemon -drx
+   	# ----------------------------
+
+
+4. install Inputs (Anthy or Mozc for JP; rime or sunpinyin or libpinyin for CN):
+	$ sudo pacman -S ibus-anthy
+	$ yay -S ibus-mozc
+	$ sudo pacman -S ibus-sunpinyin
+	$ sudo pacman -S ibus-libpinyin
+	$ sudo pacman -S ibus-rime 
+   Note:
+   	*. rime supports both Pinyin and Wubi, so it's a good option if you need both
+	*. ibus-mozc is a AUR package, so you need a tool such as yay to install it
+
+5. logout of Gnome and login again. This step is critical for adding Regions.
+
+6. Open "Settings" -> "Region & Language", add all Input to "Input Sources" section.
+
+7. Now run below command as a normal user to add the input to "Input Method":
+	$ ibus-setup
+
