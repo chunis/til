@@ -1,0 +1,34 @@
+Some Notes about SDR
+
+Just some notes about SDR(Software-Defined-Radio) learn today.
+
+1. Softwares:
+  * Linux: Gnu-Radio; GQRX; CubicSDR, SDRangel(SDRangelove under Debian),
+	  Baudline, inspectrum
+  * Windows: SDRSharp(SDR#); Gnu-Radio;
+
+2. To control HackRF One, you can verify it directly based on the project
+"github.com/mossmann/hackrf/". The Wiki has some useful informations.
+
+3. To access HackRF One as a regular user under Linux, you need to add some
+udev rules, such as below lines (make sure you're belong to group 'plugdev':
+	$ sudo vi /etc/udev/rules.d/52-hackrf.rules
+ATTR{idVendor}=="1d50", ATTR{idProduct}=="604b", SYMLINK+="hackrf-jawbreaker-%k", MODE="0660", GROUP="plugdev"
+ATTR{idVendor}=="1d50", ATTR{idProduct}=="6089", SYMLINK+="hackrf-one-%k", MODE="0660", GROUP="plugdev"
+ATTR{idVendor}=="1fc9", ATTR{idProduct}=="000c", SYMLINK+="hackrf-dfu-%k", MODE="0660", GROUP="plugdev"
+then run this to enable the udev rules without reboot your linux:
+	$ sudo udevadm control --reload-rules; sudo udevadm trigger
+
+4. I struggled half a day but my HackRF One still doesn't work under my Linux, it
+complains "Input/Output Error" with GQRX. I checked with hackrf_info and it
+shows the FW version is "2014.08.1". Maybe that's the reason, and I may have to
+upgrade the FW and try it again later.
+
+
+5. Useful URLs:
+http://www.sm5bsz.com/
+https://github.com/miek/inspectrum
+https://blog.stackattack.net/2018/09/20/getting-started-with-the-hackrf/
+https://github.com/mossmann/hackrf/wiki/Updating-Firmware
+urh(Universal Radio Hacker): https://github.com/jopohl/urh
+https://github.com/csete/gqrx
