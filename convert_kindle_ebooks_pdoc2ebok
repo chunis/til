@@ -1,0 +1,16 @@
+# About
+
+Some ebooks when be sideloaded to Kindle, they becomes "PDOC" and not "EBOK".
+The problem is when you look up some words from dictionary, they won't be saved as "New Words".
+
+The easiest way is use Calibre plugin "Quality Check":
+	https://github.com/kiwidude68/calibre_plugins/wiki/Quality-Check
+just use option "Fix" ==> "Fix ASIN" is enough.
+
+
+Other options:
+- use MobiPerl's "mobi2mobi" command (but I haven't verified it):
+	$ mobi2mobi --outfile output-file --exthtype 113 --exthdata some-ASIN-number input-file
+	$ mobi2mobi --outfile output-file --addexthtype 501 --exthdata "EBOK" input-file
+
+- use "Java Mobi Metadata Editor": https://www.mobileread.com/forums/showthread.php?t=165729
